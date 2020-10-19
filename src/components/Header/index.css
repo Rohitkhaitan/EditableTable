@@ -1,0 +1,14 @@
+.header {
+    position: sticky;
+    display :flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(61, 57, 57);
+    padding: 10px 20px;
+}
+
+.text_header {
+    margin: 0;
+    color: white;
+}
+

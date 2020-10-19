@@ -1,0 +1,41 @@
+.table_form {
+    margin: 5px auto !important;
+    display: flex;
+    justify-content: space-between;
+    
+
+
+}
+
+.input_style {
+    background-color: #f0f1f3;
+    border: none;
+    padding-left: 8px;
+    height: 30px;
+    margin: 0 6px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.button_style {
+    padding: 18px !important;
+    height: 30px;
+    width: 50px;
+}
+.version_field {
+    margin-left: 0px;
+    flex-grow: 3;
+}
+
+.box_size {
+    width: 14%;
+}
+
+.error {
+    color: red;
+    display: none;
+    position: absolute;
+    padding: 22px 0 0 5px;
+    font-size: 12px;
+
+}
+
