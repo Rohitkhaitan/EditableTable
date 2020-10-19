@@ -35,7 +35,6 @@ export default function MenuAppBar(props) {
 
   const handleDelete = () => {
     setAnchorEl(null);
-    console.log(props.data)
     const filteredData = props.data.filter(index=> index.version !== props.value)
     props.deleteData(filteredData)
 
@@ -53,7 +52,6 @@ export default function MenuAppBar(props) {
 
   return (
     <div className={classes.root}>
-        {console.log("edit", props.editingValue)}
         <IconButton 
             aria-label="account of current user"
             aria-controls="menu-appbar"

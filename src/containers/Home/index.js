@@ -4,10 +4,10 @@ import Table from '../../components/Table';
 
 
 export default function Home() {
-    const [data, setData] = useState([{version:"1", status:"inprogress", progress:"0", "start date":"2020-10-23",
-    "release date":"2020-10-23", description:"Awesome Awesome Awesome Awesome", action:""},
-    {version:"2", status:"inprogress", progress:"20", "start date":"2020-10-23",
-    "release date":"", description:"AwesomeAwesomeAwesomeAwesome", action:""}])
+    const [data, setData] = useState([{version:"Version 1.0", progress:"100", "start date":"2020-10-18",
+    "release date":"2020-10-23", description:"Awesome", action:""},
+    {version:"Version 1.2", progress:"20", "start date":"2020-10-19",
+    "release date":"", description:"Version 1.2", action:""}])
 
     const handleInput = (value) => {
         setData([...data, value])

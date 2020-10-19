@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import InputForm from '../Table/inputForm';
+import './index.css';
 
 export default function DialogSelect(props) {
   const [open, setOpen] = React.useState(false);
@@ -16,13 +17,12 @@ export default function DialogSelect(props) {
   const editingValue = props.editingValue
   return (
     <div>
-      {console.log("data", editingValue)}
-      {/* <Button onClick={handleClickOpen}>Open select dialog</Button> */}
       <Dialog disableBackdropClick disableEscapeKeyDown open={props.open} onClose={handleClose}>
         <DialogTitle>Edit Table</DialogTitle>
         <DialogContent>
           <InputForm  
             editmode={true}
+            closePopup={handleClose}
             editingDatafunction={props.editDatafunction}
             editingData={props.data}
             data={props.data.filter(data=> data.version!== editingValue.version)}

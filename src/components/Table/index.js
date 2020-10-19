@@ -38,7 +38,6 @@ export default function BasicTable({data, insert, deleteData, editDatafunction})
 
   return (
     <TableContainer className="table_container" component={Paper}>
-      {console.log(insert)}
       <h3 className="table_header">Projects / ENV1.5</h3>
       <h2 className="table_sub_header">Releases</h2>
       <hr className="horizontal_line"/>
@@ -55,14 +54,15 @@ export default function BasicTable({data, insert, deleteData, editDatafunction})
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((index) => (
+          {data.sort((a, b) => {
+                  return new Date(b["start date"]) - new Date(a["start date"]);
+                }).map((index) => (
             <TableRow key={index.version}>
-              {/* {console.log(index)} */}
               <TableCell component="th" scope="row">
-              <DragIndicatorIcon style={{verticalAlign:"bottom", color:"#d0d3d8"}}/>{index.version}
+                <DragIndicatorIcon style={{verticalAlign:"bottom", color:"#d0d3d8"}}/>{index.version}
               </TableCell>
               <TableCell align="center">
-                {index.progress == 0 ? <div className="inprogress">IN PROGRESS</div> : 
+                {index.progress === 0 ? <div className="inprogress">IN PROGRESS</div> : 
                 index.progress < 100? <div className="unreleased">UNRELEASED</div> : 
                 <div className="released">RELEASED</div>}
               </TableCell>
@@ -70,11 +70,10 @@ export default function BasicTable({data, insert, deleteData, editDatafunction})
                 <div className="progress_bar">
                   <div className="progress" style={{width:`${index.progress}%` }}></div>
                 </div>
-                {/* <progress value="50" max= "100" /> */}
               </TableCell>
               <TableCell align="center">{index["start date"]}</TableCell>
               <TableCell align="center">{index["release date"] || "..."}</TableCell>
-              <TableCell align="center" className="description_section">{index.description.slice(0, 7)}{index.description.length >7 ? "..." : ""}</TableCell>
+              <TableCell align="center" className="description_section">{index.description.length > 12 ? index.description.slice(0, 9)+"...": index.description }</TableCell>
               <TableCell align="right">
                 <ActionField editingValue={index} value={index.version} data={data} deleteData={deleteData} editDatafunction={editDatafunction}/>
               </TableCell>

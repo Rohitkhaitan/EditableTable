@@ -33,7 +33,6 @@ export default function InputForm(props) {
 
   const handleReleaseDate = (event) =>{
     let date= event.target.value.split(' ')
-    // console.log(startDate.length && new Date(startDate)> new Date(date))
     if(!startDate.length) {
       setStartDate(date)
     }
@@ -61,8 +60,9 @@ export default function InputForm(props) {
     }
     else {
       if(props.editmode) {
-        props.editingDatafunction([...props.data, {version:version, progress:progress, "start date":startDate[0],
-        "release date":releaseDate[0], description:description}])
+        props.editingDatafunction([...props.data, {version:version, progress:progress, "start date":startDate,
+        "release date":releaseDate, description:description}])
+        props.closePopup();
       }
       else {
         props.insert({version:version, progress:progress, "start date":startDate[0],
@@ -93,7 +93,7 @@ export default function InputForm(props) {
           required
           style={{flexGrow: "2"}}
           />
-          <p className={"error"}stylw={{position:"relative"}}>Version name is already Exist!</p>
+          <p className={"error"}>Version name is already Exist!</p>
           
         {props.editmode && <input 
           id="progress" className="input_style"
@@ -108,7 +108,7 @@ export default function InputForm(props) {
           id="start_date" className="date_picker_field input_style box_size"
           placeholder="StartDate" 
           type="date"
-          min={new Date().toISOString().split('T')[0]} 
+          // min={} 
           value={startDate}
           onChange={event => handleStartDate(event)}
           required 
@@ -120,7 +120,7 @@ export default function InputForm(props) {
           id="release_date" className="date_picker_field input_style box_size"
           placeholder="ReleaseDate" 
           type="date" 
-          min={new Date(startDate) > new Date()? startDate : new Date().toISOString().split('T')[0]}
+          min={startDate}
           value={releaseDate}
           onChange={event => handleReleaseDate(event)}
           />
